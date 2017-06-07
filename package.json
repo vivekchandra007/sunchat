@@ -1,0 +1,31 @@
+{
+    "name": "sunchat",
+    "version": "0.0.1",
+    "private": true,
+    "description": "A chat application using socket.io",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vivekchandra007/sunchat.git"
+    },
+    "keywords": [
+        "sunchat"
+    ],
+    "author": "Vivek Chandra",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vivekchandra007/sunchat/issues"
+    },
+    "homepage": "https://github.com/vivekchandra007/sunchat#readme",
+    "dependencies": {
+        "express": "^4.15.3",
+        "socket.io": "^2.0.2"
+    },
+    "engines": {
+        "node": "6.x"
+    }
+}
