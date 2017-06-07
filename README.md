@@ -1,4 +1,5 @@
-# Node.js SunChat Node.js application
+# Node.js 'SunChat' application
+# by Vivek Chandra
 
 This application demonstrates a simple, reusable Node.js web application based on the Express framework.
 
