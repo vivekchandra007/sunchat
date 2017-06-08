@@ -1,0 +1,59 @@
+/*common.js*/
+
+body,
+html {
+    background-image: url('/images/zig zag wool.png');
+    width: 100%;
+    margin: 0 auto;
+    font-family: Lato, sans-serif;
+    text-align: center;
+}
+
+.header-text {
+    font-size: 72px;
+}
+
+.standOut {
+    font-family: 'Mate SC', serif;
+}
+
+.mainDiv {
+    background-color: black;
+    box-shadow: 0 0 12px #1abc9c;
+    padding: 3%;
+    width: 75%;
+}
+
+
+/* #Turquoise Flat Button */
+
+.turquoise-flat-button {
+    position: relative;
+    vertical-align: top;
+    width: 15%;
+    height: 100%;
+    padding: 0;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #1abc9c;
+    border: 0;
+    border-bottom: 2px solid #12ab8d;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #12ab8d;
+    box-shadow: inset 0 -2px #12ab8d;
+}
+
+.turquoise-flat-button:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}

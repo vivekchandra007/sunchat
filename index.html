@@ -1,79 +1,70 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Sun Chat</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font: 13px Helvetica, Arial;
-        }
-        
-        form {
-            background: #000;
-            padding: 3px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        
-        form input {
-            border: 0;
-            padding: 10px;
-            width: 90%;
-            margin-right: .5%;
-        }
-        
-        form button {
-            width: 9%;
-            background: rgb(130, 224, 255);
-            border: none;
-            padding: 10px;
-        }
-        
-        #messages {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        #messages li {
-            padding: 5px 10px;
-        }
-        
-        #messages li:nth-child(odd) {
-            background: #eee;
-        }
-    </style>
+    <title>Sunchat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="A webapp for casual chat using socket.io">
+    <meta name="author" content="Vivek Chandra">
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom font -->
+    <link href="https://fonts.googleapis.com/css?family=Mate+SC" rel="stylesheet">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="/style/index.css" />
+    <!-- common css -->
+    <link rel="stylesheet" href="/style/common.css" />
 </head>
 
 <body>
-    <ul id="messages"></ul>
-    <form action="">
-        <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-        $(function() {
-            var socket = io();
-            $('form').submit(function() {
-                var msg = $('#m').val();
-                socket.emit('chat message', msg);
-                $('#messages').append($('<li>').text(msg));
-                $('#m').val('');
-                return false;
-            });
-            socket.on('chat message', function(msg) {
-                $('#messages').append($('<li>').text(msg));
-            });
-        });
-    </script>
+    <script src="/scripts/index.js"></script>
+    <h1 class="standOut">Sunchat</h1>
+    <div id="messages"></div>
+    <div>
+        <form action="" id="formMessage">
+            <input id="txtMessage" autocomplete="off" /><button id="btnMessage" class="button turquoise-flat-button">Send</button>
+        </form>
+    </div>
+    <!-- Modal Window for Entering name -->
+    <div class="modal fade" id="enterSunchatModal" role="dialog">
+        <div class="modal-dialog" style="width: 50%; height: 50%">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="verifyMobile">
+                        <input id="name" type="text" class="form-control input-md" name="name" placeholder="Provide your name" maxlength="30">
+                    </div>
+                    <div id="enterSunchatError" class="alert alert-danger">
+                        <strong>Error: </strong> Some error.
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button id="btnEnterSunchat" type="button" class="turquoise-flat-button">ENTER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="audiotagNewMessage" src="/sounds/new-message.mp3" preload="auto"></audio>
 </body>
 
 </html>
