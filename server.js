@@ -14,21 +14,21 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var userName = "";
 io.on('connection', function(socket) {
     console.log('a user connected');
     socket.on('disconnect', function() {
         console.log('user disconnected');
     });
     socket.on('new user', function(name) {
-        userName = name;
         console.log(name + ' just joined');
         socket.broadcast.emit('new user', name);
     });
     socket.on('chat message', function(msg) {
-        msg = userName + ': ' + msg;
         console.log('message: ' + msg);
         socket.broadcast.emit('chat message', msg);
+    });
+    socket.on('typing', function(name) {
+        socket.broadcast.emit('typing', name);
     });
 });
 

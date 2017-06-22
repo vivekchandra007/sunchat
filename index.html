@@ -39,28 +39,30 @@
 <body>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/scripts/index.js"></script>
-    <h1 class="standOut">Sunchat</h1>
+    <h1 id="title" class="standOut">Sunchat</h1>
     <div id="messages"></div>
     <div>
         <form action="" id="formMessage">
+            <span id="typing" style="color: coral">someone is typing...</span>
+            <br/>
             <input id="txtMessage" autocomplete="off" /><button id="btnMessage" class="button turquoise-flat-button">Send</button>
         </form>
     </div>
     <!-- Modal Window for Entering name -->
-    <div class="modal fade" id="enterSunchatModal" role="dialog">
+    <div class="modal fade" id="enterSunchatModal" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" style="width: 50%; height: 50%">
             <div class="modal-content">
-                <div class="modal-body">
-                    <div id="verifyMobile">
+                <form action="" id="formEnterSunchat">
+                    <div class="modal-body">
                         <input id="name" type="text" class="form-control input-md" name="name" placeholder="Provide your name" maxlength="30">
+                        <div id="errorEnterSunchat" class="alert alert-danger">
+                            <strong>Error: </strong> Some error.
+                        </div>
                     </div>
-                    <div id="enterSunchatError" class="alert alert-danger">
-                        <strong>Error: </strong> Some error.
+                    <div class="modal-footer" style="text-align: center;">
+                        <button id="btnEnterSunchat" type="submit" class="turquoise-flat-button" style="width: 130px">ENTER</button>
                     </div>
-                </div>
-                <div class="modal-footer" style="text-align: center;">
-                    <button id="btnEnterSunchat" type="button" class="turquoise-flat-button">ENTER</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
